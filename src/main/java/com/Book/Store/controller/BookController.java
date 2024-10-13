@@ -37,6 +37,7 @@ public class BookController {
                 .body("Book deleted successfully!");
     }
 
+    //for testing only
     @GetMapping("/load")
     public String loadBooksToDb() {
         List<Books> bookList = Arrays.asList(
