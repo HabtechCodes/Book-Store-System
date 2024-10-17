@@ -30,7 +30,11 @@ public class BookService {
                         ()-> new RuntimeException("Book with id: " + bookId + "Not Found"));
     }
 
-    public void deleteBook(int bookId){
+    public String deleteBookById(int bookId) throws {
+        Books book = this.getBookById(bookId);
+        if(book == null) {
+            throw new RuntimeException("Book with id: " + bookId + " Not found");
+        }
         booksRepository.deleteById(bookId);
     }
 

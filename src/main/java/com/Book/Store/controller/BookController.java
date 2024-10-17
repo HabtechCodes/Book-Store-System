@@ -4,6 +4,7 @@ import com.Book.Store.model.Books;
 import com.Book.Store.model.Cart;
 import com.Book.Store.service.BookService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,10 +42,16 @@ public class BookController {
 
     @DeleteMapping("/{bookId}")
     public ResponseEntity<String> deleteBookById(@PathVariable int bookId){
-        bookService.deleteBook(bookId);
+        try {
+            bookService.deleteBookById(bookId);
+            return ResponseEntity.ok()
+                    .body("Book deleted successfully!");
+        }catch(RuntimeException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+       
 
-        return ResponseEntity.ok()
-                .body("Book deleted successfully!");
+
     }
     //for testing only
     @GetMapping("/load")
