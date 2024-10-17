@@ -35,4 +35,7 @@ public class BookService {
     }
 
 
+    public List<Books> searchBooksByTitle(String title) {
+        return booksRepository.findByBookTittleContaining(title);
+    }
 }
