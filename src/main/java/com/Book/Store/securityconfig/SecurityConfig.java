@@ -24,9 +24,9 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     private final UserDetailsService userDetailsService;
-    private static final String[] SECURED_URL_ADMIN = {"api/v1/auth/admin/login"};
+    private static final String[] SECURED_URL_ADMIN = {"api/v1/auth/admin/login","api/book/**"};
     private static final String[] SECURED_URL_CUSTOMER = {"api/v1/auth/customer/login"};
-    private static final String[] UNSECURED_URL = {"api/v1/auth/**"};
+    private static final String[] UNSECURED_URL = {"api/v1/auth/**","/api/book/books"};
 
     @Bean
     public AuthenticationProvider authenticationProvider() {

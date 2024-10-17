@@ -40,6 +40,7 @@ public class UserService {
         user.setFirstName(registerDTO.getFirstName());
         user.setLastName(registerDTO.getLastName());
         user.setEmail(registerDTO.getEmail());
+        //encoding password with BCryptEncoder
         user.setPassword(passwordEncoder
                         .encode(registerDTO
                         .getPassword()));

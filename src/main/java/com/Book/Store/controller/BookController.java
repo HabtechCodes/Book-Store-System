@@ -5,7 +5,6 @@ import com.Book.Store.model.Cart;
 import com.Book.Store.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
@@ -33,7 +32,6 @@ public class BookController {
         return ResponseEntity.ok(bookService.getAllBooks());
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping("/books")
     public ResponseEntity<String> addBook(@RequestBody Books book) {
         bookService.addBook(book);
